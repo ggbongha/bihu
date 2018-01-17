@@ -8,17 +8,24 @@ const store = new Vuex.Store({
     user: null
   },
   mutations: {
-    setUser: function setUser(state, user) {
-      state.user = user;
+    setUser (state, user) {
+      state.user = user
+    }
+  },
+  getters: {
+    uid({user}) {
+      if(user) return user.id;
+      return false;
     }
   },
   actions: {
-    exit(context){
-      context.commit('setUser', null);
-    },
-    login(context, user){
-      context.commit('setUser', user);
-    }
-  }
-});
-export default store;
+     exit(context){
+       context.commit('setUser', null);
+     },
+     login(context, user){
+       context.commit('setUser', user);
+     }
+   }
+})
+
+export default store
